@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_number_trivia/core/error/exceptions.dart';
+import '../../../../core/error/exceptions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/number_trivia_model.dart';
@@ -29,7 +29,6 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDatasource {
 
   @override
   Future<void> cacheNumberTrivia(NumberTriviaModel triviaToCache) {
-    print(json.encode(triviaToCache.toJSON()));
     return sharedPreferences.setString(
       cachedNumberTriviaKey,
       json.encode(triviaToCache.toJSON()),

@@ -57,6 +57,7 @@ void main() {
       number: 1,
       text: "Test text",
     );
+    var tNumberTriviaJson = json.encode(tNumberTriviaModel.toJSON());
     test('sholud call SharedPreferences to cache the data', () async {
       // arrange
       when(() => mockSharedPreferences.setString(any(), any()))
@@ -64,10 +65,9 @@ void main() {
       // act
       await dataSource.cacheNumberTrivia(tNumberTriviaModel);
       // assert
-      final tCachedTriviaFixture = fixture('trivia_cached.json');
       verify(() => mockSharedPreferences.setString(
             cachedNumberTriviaKey,
-            json.encode(tCachedTriviaFixture),
+            tNumberTriviaJson,
           ));
     });
   });
