@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import '../models/number_trivia_model.dart';
 
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
@@ -8,6 +7,7 @@ import '../../domain/entities/number_trivia.dart';
 import '../../domain/repositories/number_trivia_repository.dart';
 import '../datasources/number_trivia_local_datasource.dart';
 import '../datasources/number_trivia_remote_datasource.dart';
+import '../models/number_trivia_model.dart';
 
 typedef _ConcreteOrRandom = Future<NumberTriviaModel> Function();
 
