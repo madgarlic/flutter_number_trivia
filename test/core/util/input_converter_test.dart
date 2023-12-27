@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_number_trivia/core/error/failures.dart';
 import 'package:flutter_number_trivia/core/util/input_converter.dart';
 import 'package:flutter_test/flutter_test.dart';
 
