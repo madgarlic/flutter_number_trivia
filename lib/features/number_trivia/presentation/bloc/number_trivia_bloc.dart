@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_number_trivia/core/error/failures.dart';
-import 'package:flutter_number_trivia/core/usecases/usecase.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecase.dart';
 
 import '../../../../core/util/input_converter.dart';
 import '../../domain/entities/number_trivia.dart';
