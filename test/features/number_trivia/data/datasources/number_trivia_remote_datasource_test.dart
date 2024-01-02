@@ -17,7 +17,7 @@ void main() {
 
   setUp(() {
     mockHttpClient = MockHttpClient();
-    dataSource = NumberTriviaRemoteDatasourceImpl(client: mockHttpClient);
+    dataSource = NumberTriviaRemoteDataSourceImpl(client: mockHttpClient);
     registerFallbackValue(Uri.http('google.it'));
   });
   group('getConcreteNumberTrivia', () {

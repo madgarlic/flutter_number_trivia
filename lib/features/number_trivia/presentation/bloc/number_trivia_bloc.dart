@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-
 import '../../../../core/util/input_converter.dart';
 import '../../domain/entities/number_trivia.dart';
 import '../../domain/usecases/get_concrete_number_trivia.dart';
@@ -12,8 +12,11 @@ import '../../domain/usecases/get_random_number_trivia.dart';
 part 'number_trivia_event.dart';
 part 'number_trivia_state.dart';
 
+// ignore: constant_identifier_names
 const String SERVER_FAILURE_MESSAGE = 'Server failure!';
+// ignore: constant_identifier_names
 const String CACHE_FAILURE_MESSAGE = 'Cache failure!';
+// ignore: constant_identifier_names
 const String CONVERSION_FAILURE_MESSAGE =
     'Invalid input - The number should be a positive integer o zero!';
 
