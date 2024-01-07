@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;
 }
 
 class NetworkInfoImpl implements NetworkInfo {
-  final DataConnectionChecker connectionChecker;
+  final InternetConnectionChecker connectionChecker;
 
   NetworkInfoImpl({required this.connectionChecker});
 

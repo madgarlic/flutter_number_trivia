@@ -1,4 +1,5 @@
-import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+
 import 'core/network/network_info.dart';
 import 'core/util/input_converter.dart';
 import 'features/number_trivia/data/datasources/number_trivia_local_datasource.dart';
@@ -16,16 +17,23 @@ final getIt = GetIt.instance;
 
 void injectionSetUp() {
   //! External
-  initExternal();
+  getIt.registerSingletonAsync<SharedPreferences>(() async {
+    final sp = await SharedPreferences.getInstance();
+    return sp;
+  });
+
+  getIt.registerLazySingleton(() => http.Client());
+  getIt.registerLazySingleton(() => InternetConnectionChecker());
 
   //! Core stuff
-  initCore();
 
-  //! Features - Number Trivi
-  initFeatures();
-}
+  getIt.registerLazySingleton(() => InputConverter());
+  getIt.registerLazySingleton<NetworkInfo>(
+    () => NetworkInfoImpl(connectionChecker: getIt()),
+  );
 
-void initFeatures() {
+  //! Features - Number Trivia
+
   // Bloc
 
   getIt.registerFactory<NumberTriviaBloc>(
@@ -56,18 +64,4 @@ void initFeatures() {
   getIt.registerSingletonWithDependencies<NumberTriviaLocalDatasource>(
       () => NumberTriviaLocalDataSourceImpl(sharedPreferences: getIt()),
       dependsOn: [SharedPreferences]);
-}
-
-void initCore() {
-  getIt.registerLazySingleton(() => InputConverter());
-  getIt.registerLazySingleton<NetworkInfo>(
-    () => NetworkInfoImpl(connectionChecker: getIt()),
-  );
-}
-
-void initExternal() {
-  getIt.registerLazySingletonAsync<SharedPreferences>(
-      () async => await SharedPreferences.getInstance());
-  getIt.registerLazySingleton(() => http.Client());
-  getIt.registerLazySingleton(() => DataConnectionChecker());
 }

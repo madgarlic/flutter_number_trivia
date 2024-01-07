@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'features/number_trivia/presentation/pages/number_trivia_page.dart';
 import 'injection_container.dart';
 
 void main() async {
   injectionSetUp();
-  await getIt.allReady();
   runApp(const NumberTriviaApp());
 }
 
@@ -24,7 +24,22 @@ class NumberTriviaApp extends StatelessWidget {
           onSecondary: Colors.green.shade600,
         ),
       ),
-      home: const NumberTriviaPage(),
+      home: FutureBuilder(
+          future: getIt.allReady(),
+          builder: (context, snap) {
+            if (snap.hasData) {
+              return const NumberTriviaPage();
+            } else {
+              return Scaffold(
+                appBar: AppBar(
+                  title: const Text('Loading...'),
+                ),
+                body: const SafeArea(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          }),
     );
   }
 }

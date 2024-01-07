@@ -1,12 +1,13 @@
 import 'package:flutter_number_trivia/core/network/network_info.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:data_connection_checker_nulls/data_connection_checker_nulls.dart';
 
-class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
+class MockDataConnectionChecker extends Mock
+    implements InternetConnectionChecker {}
 
 void main() {
-  late DataConnectionChecker mockDataconnectionChecker;
+  late InternetConnectionChecker mockDataconnectionChecker;
   late NetworkInfoImpl networkInfo;
 
   setUp(() {
