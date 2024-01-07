@@ -35,7 +35,9 @@ class NumberTriviaApp extends StatelessWidget {
                   title: const Text('Loading...'),
                 ),
                 body: const SafeArea(
-                  child: CircularProgressIndicator(),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
               );
             }
