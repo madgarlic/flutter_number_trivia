@@ -1,13 +1,12 @@
 import 'package:flutter_number_trivia/core/network/network_info.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDataConnectionChecker extends Mock
-    implements InternetConnectionChecker {}
+class MockDataConnectionChecker extends Mock implements InternetConnection {}
 
 void main() {
-  late InternetConnectionChecker mockDataconnectionChecker;
+  late InternetConnection mockDataconnectionChecker;
   late NetworkInfoImpl networkInfo;
 
   setUp(() {
@@ -20,12 +19,12 @@ void main() {
         () async {
       // arrange
       final tHasConnectionFuture = Future.value(true);
-      when(() => mockDataconnectionChecker.hasConnection)
+      when(() => mockDataconnectionChecker.hasInternetAccess)
           .thenAnswer((_) => tHasConnectionFuture);
       // act
       final result = networkInfo.isConnected;
       // assert
-      verify(() => mockDataconnectionChecker.hasConnection);
+      verify(() => mockDataconnectionChecker.hasInternetAccess);
       expect(result, tHasConnectionFuture);
     });
   });

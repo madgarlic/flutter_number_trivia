@@ -1,4 +1,4 @@
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 import 'core/network/network_info.dart';
 import 'core/util/input_converter.dart';
@@ -23,7 +23,7 @@ void injectionSetUp() {
   });
 
   getIt.registerLazySingleton(() => http.Client());
-  getIt.registerLazySingleton(() => InternetConnectionChecker());
+  getIt.registerLazySingleton(() => InternetConnection());
 
   //! Core stuff
 
