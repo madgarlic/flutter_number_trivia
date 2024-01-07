@@ -15,14 +15,14 @@ import 'package:http/http.dart' as http;
 final getIt = GetIt.instance;
 
 void injectionSetUp() {
-  //! Features - Number Trivi
-  initFeatures();
+  //! External
+  initExternal();
 
   //! Core stuff
   initCore();
 
-  //! External
-  initExternal();
+  //! Features - Number Trivi
+  initFeatures();
 }
 
 void initFeatures() {
@@ -53,8 +53,9 @@ void initFeatures() {
 
   getIt.registerLazySingleton<NumberTriviaRemoteDatasource>(
       () => NumberTriviaRemoteDataSourceImpl(client: getIt()));
-  getIt.registerLazySingleton<NumberTriviaLocalDatasource>(
-      () => NumberTriviaLocalDataSourceImpl(sharedPreferences: getIt()));
+  getIt.registerSingletonWithDependencies<NumberTriviaLocalDatasource>(
+      () => NumberTriviaLocalDataSourceImpl(sharedPreferences: getIt()),
+      dependsOn: [SharedPreferences]);
 }
 
 void initCore() {
@@ -66,7 +67,7 @@ void initCore() {
 
 void initExternal() {
   getIt.registerLazySingletonAsync<SharedPreferences>(
-      () async => SharedPreferences.getInstance());
+      () async => await SharedPreferences.getInstance());
   getIt.registerLazySingleton(() => http.Client());
   getIt.registerLazySingleton(() => DataConnectionChecker());
 }
