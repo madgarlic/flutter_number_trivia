@@ -26,7 +26,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
 
 SPEC CHECKSUMS:
-  connectivity_plus: 53efb943fc2882c8512d84c45707bcabc4c36076
+  connectivity_plus: 49d28228a7da4dec7d9159bd444e093411f8b98e
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126

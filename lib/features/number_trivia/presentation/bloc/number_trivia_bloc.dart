@@ -30,10 +30,10 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
     required this.randomUseCase,
     required this.inputConverter,
   }) : super(NumberTriviaInitial()) {
-    on<NumberTriviaConcreteNumberStarted>((event, emit) {
+    on<NumberTriviaConcreteNumberStarted>((event, emit) async {
       final inputEither =
           inputConverter.stringToUnsignedInteger(event.numberString);
-      inputEither.fold(
+      await inputEither.fold(
         (failure) {
           emit(const NumberTriviaFailure(message: CONVERSION_FAILURE_MESSAGE));
         },
